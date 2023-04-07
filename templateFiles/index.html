@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href='/staticFiles/style.css' />
+  </head>
+  <body>
+    <h2>Insert data</h2>
+    <form action="{{ url_for("index")}}" method="post">
+      <label for="column">Column: </label>
+      <input type="number" id="column" name="column" placeholder="Column Number">
+      <label for="row">Row: </label>
+      <input type="number" id="row" name="row" placeholder="Row Number">
+      <label for="data">Data: </label>
+      <input type="text" id="cell" name="data" placeholder="Enter Data">
+      <button type="submit">Submit</button>
+    </form>
+    <h2>Get data from a particular cell</h2>
+    <form action="{{ url_for("fetchCell")}}" method="post">
+      <label for="column">Column: </label>
+      <input type="number" id="column" name="column" placeholder="Column Number">
+      <label for="row">Row: </label>
+      <input type="number" id="row" name="row" placeholder="Row Number">
+      <button type="submit">Submit</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          {% for row in data[0] %}
+          <th>Column</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
