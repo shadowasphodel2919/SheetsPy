@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href='/staticFiles/style.css' />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
     <h2>Insert data</h2>
@@ -12,16 +13,29 @@
       <input type="number" id="row" name="row" placeholder="Row Number">
       <label for="data">Data: </label>
       <input type="text" id="cell" name="data" placeholder="Enter Data">
-      <button type="submit">Submit</button>
+      <button id="submit" type="submit" name="update_cell">Submit</button>
     </form>
     <h2>Get data from a particular cell</h2>
-    <form action="{{ url_for("fetchCell")}}" method="post">
-      <label for="column">Column: </label>
-      <input type="number" id="column" name="column" placeholder="Column Number">
+    <form method="post">
       <label for="row">Row: </label>
       <input type="number" id="row" name="row" placeholder="Row Number">
-      <button type="submit">Submit</button>
+      <label for="column">Column: </label>
+      <input type="number" id="column" name="column" placeholder="Column Number">
+      <button id="subCell" type="submit" name="retrieve_cell">Submit</button>
     </form>
+    {% if cell_value %}
+        <p>Cell {{ row_num }},{{ col_num }} has value "{{ cell_value }}"</p>
+    {% endif %}
+    <!--Delete a cell-->
+    <h2>Delete a particular row</h2>
+    <form method="post">
+      <label for="row">Row: </label>
+      <input type="number" id="row" name="row" placeholder="Row Number">
+      <button id="subCell" type="submit" name="delete_row">Submit</button>
+    </form>
+    {% if delete_value %}
+        <p>Row {{ delete_value }} is deleted.</p>
+    {% endif %}
     <table>
       <thead>
         <tr>

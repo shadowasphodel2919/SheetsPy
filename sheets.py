@@ -1,11 +1,13 @@
 import gspread #https://docs.gspread.org/en/latest/
-from oauth2client.service_account import ServiceAccountCredentials
+client = gspread.service_account(filename='credentials.json')
+# from oauth2client.service_account import ServiceAccountCredentials
 
-# define credentials to access the Google Sheets API
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
-client = gspread.authorize(creds)
+# # define credentials to access the Google Sheets API
+# scope = ['https://spreadsheets.google.com/feeds',
+#          'https://www.googleapis.com/auth/drive']
+# creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+# client = gspread.authorize(creds)
+
 
 # specify the name of the spreadsheet and the sheet to write to
 sheet_name = 'SheetsAPI'
@@ -22,12 +24,6 @@ worksheet = sheet.worksheet(worksheet_name)
 # # write the data to the worksheet
 # worksheet.insert_rows(data)
 
-# print('Data inserted successfully!')
-
-#sheet.get() -> getAll data
-#sheet.
-
-
 
 def getAllData():
     col = worksheet.get()
@@ -36,3 +32,9 @@ def getAllData():
 def addCell(row,col,value):
     worksheet.update_cell(row,col,value)
 
+def returnCell(row,col):
+    return worksheet.cell(int(row),int(col)).value
+
+def deleteRow(row):
+    print(row,"deleted")
+    worksheet.delete_row(row)

@@ -20,6 +20,9 @@ p {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
+    overflow-y:scroll;
+    height:100px;
+    display:block;
   }
 
   th, td {
