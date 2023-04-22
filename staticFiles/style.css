@@ -1,27 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
-  background: Linen;
+  font-family: 'Lato', sans-serif;
+  background: rgb(0, 0, 0);
   margin-top: 50px;
   margin-left: 100px;
-  }
- 
-h1 {
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 2.5em;
-  color: FireBrick;
-  }
- 
-p {
-  font-family: Georgia, serif;
-  font-size: 1.2em;
-  color: DarkSlateGray;
-  }
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner{
+  display: flex;
+  width: 50vh;
+  flex-direction: column;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
 
   table {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
-    overflow-y:scroll;
-    height:100px;
+    /* overflow-y:scroll; */
+    overflow: auto;
+    height: 100px;
     display:block;
   }
 
@@ -32,5 +46,5 @@ p {
   }
 
   th {
-    background-color: #f2f2f2;
+    background-color: #000000;
   }

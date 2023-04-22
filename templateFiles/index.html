@@ -6,54 +6,75 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
+    <h1>Using Google Sheets API</h1>
     <h2>Insert data</h2>
-    <form action="{{ url_for("index")}}" method="post">
-      <label for="column">Column: </label>
-      <input type="number" id="column" name="column" placeholder="Column Number">
-      <label for="row">Row: </label>
-      <input type="number" id="row" name="row" placeholder="Row Number">
-      <label for="data">Data: </label>
-      <input type="text" id="cell" name="data" placeholder="Enter Data">
-      <button id="submit" type="submit" name="update_cell">Submit</button>
-    </form>
+    <div class="banner">
+      <form action="{{ url_for("index")}}" method="post">
+        <div>
+        <label for="column">Column: </label>
+        <input type="number" id="column" name="column" placeholder="Column Number">
+        </div>
+        <div>
+        <label for="row">Row: </label>
+        <input type="number" id="row" name="row" placeholder="Row Number">
+        </div>
+        <div>
+        <label for="data">Data: </label>
+        <input type="text" id="cell" name="data" placeholder="Enter Data">
+        </div>
+        <button id="submit" type="submit" name="update_cell">Submit</button>
+      </form>
+    </div>
     <h2>Get data from a particular cell</h2>
-    <form method="post">
-      <label for="row">Row: </label>
-      <input type="number" id="row" name="row" placeholder="Row Number">
-      <label for="column">Column: </label>
-      <input type="number" id="column" name="column" placeholder="Column Number">
-      <button id="subCell" type="submit" name="retrieve_cell">Submit</button>
-    </form>
-    {% if cell_value %}
-        <p>Cell {{ row_num }},{{ col_num }} has value "{{ cell_value }}"</p>
-    {% endif %}
-    <!--Delete a cell-->
+    <div class="banner">
+      <form method="post">
+        <div>
+        <label for="row">Row: </label>
+        <input type="number" id="row" name="row" placeholder="Row Number">
+        </div>
+        <div>
+        <label for="column">Column: </label>
+        <input type="number" id="column" name="column" placeholder="Column Number">
+        </div>
+        <button id="subCell" type="submit" name="retrieve_cell">Submit</button>
+      </form>
+      {% if cell_value %}
+          <p>Cell {{ row_num }},{{ col_num }} has value "{{ cell_value }}"</p>
+      {% endif %}
+    </div>
     <h2>Delete a particular row</h2>
-    <form method="post">
-      <label for="row">Row: </label>
-      <input type="number" id="row" name="row" placeholder="Row Number">
-      <button id="subCell" type="submit" name="delete_row">Submit</button>
-    </form>
-    {% if delete_value %}
-        <p>Row {{ delete_value }} is deleted.</p>
-    {% endif %}
-    <table>
-      <thead>
-        <tr>
-          {% for row in data[0] %}
-          <th>Column</th>
-          {% endfor %}
-        </tr>
-      </thead>
-      <tbody>
-        {% for row in data %}
+    <div class="banner">
+      <!--Delete a cell-->
+      <form method="post">
+        <div>
+        <label for="row">Row: </label>
+        <input type="number" id="row" name="row" placeholder="Row Number">
+        </div>
+        <button id="subCell" type="submit" name="delete_row">Submit</button>
+      </form>
+      {% if delete_value %}
+          <p>Row {{ delete_value }} is deleted.</p>
+      {% endif %}
+    </div>
+    <div class="banner">
+      <table>
+        <thead>
           <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
+            {% for row in data[0] %}
+            <th>Column</th>
+            {% endfor %}
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for row in data %}
+            <tr>
+              {% for i in row %}
+              <td>{{i}}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
