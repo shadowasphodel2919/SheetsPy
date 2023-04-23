@@ -3,12 +3,22 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-body {
   font-family: 'Lato', sans-serif;
+  /* border: green 1px solid; */
+}
+body{
+  background: #000000;
+}
+h1{
+  font-size: min(5vh,8vw);
+}
+h2{
+  font-size: min(3vh,6vw);
+}
+.main {
+  height: 100vh;
+  width: 100vw;
   background: rgb(0, 0, 0);
-  margin-top: 50px;
-  margin-left: 100px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -19,13 +29,37 @@ body {
 
 .banner{
   display: flex;
-  width: 50vh;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+}
+
+.banner button,input{
+  width: 10rem;
+  color: #000000;
+  font-weight: 900;
+}
+
+.banner button{
+  height: 1.5rem;
 }
 
 form{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+form .field{
+  width: 20rem;
+  
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -33,7 +67,6 @@ form{
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
-    /* overflow-y:scroll; */
     overflow: auto;
     height: 100px;
     display:block;
@@ -47,4 +80,18 @@ form{
 
   th {
     background-color: #000000;
+  }
+
+  @media only screen and (max-width: 768px) {
+    /* For desktop: */
+    .banner{
+      /* width: 50%; */
+      width: 80vw;
+      /* background-color: aqua; */
+      font-size: min(2vh,4vw);
+    }
+    form .field{
+      width: 80vw;
+      font-size: min(2vh, 5vw);
+    }
   }

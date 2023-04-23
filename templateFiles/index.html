@@ -6,19 +6,20 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
-    <h1>Using Google Sheets API</h1>
+    <div class="main">
+      <h1>Using Google Sheets API</h1>
     <h2>Insert data</h2>
     <div class="banner">
       <form action="{{ url_for("index")}}" method="post">
-        <div>
+        <div class="field">
         <label for="column">Column: </label>
         <input type="number" id="column" name="column" placeholder="Column Number">
         </div>
-        <div>
+        <div class="field">
         <label for="row">Row: </label>
         <input type="number" id="row" name="row" placeholder="Row Number">
         </div>
-        <div>
+        <div class="field">
         <label for="data">Data: </label>
         <input type="text" id="cell" name="data" placeholder="Enter Data">
         </div>
@@ -28,11 +29,11 @@
     <h2>Get data from a particular cell</h2>
     <div class="banner">
       <form method="post">
-        <div>
+        <div class="field">
         <label for="row">Row: </label>
         <input type="number" id="row" name="row" placeholder="Row Number">
         </div>
-        <div>
+        <div class="field">
         <label for="column">Column: </label>
         <input type="number" id="column" name="column" placeholder="Column Number">
         </div>
@@ -46,7 +47,7 @@
     <div class="banner">
       <!--Delete a cell-->
       <form method="post">
-        <div>
+        <div class="field">
         <label for="row">Row: </label>
         <input type="number" id="row" name="row" placeholder="Row Number">
         </div>
@@ -75,6 +76,7 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
     </div>
   </body>
 </html>
